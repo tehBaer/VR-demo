@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class TriggerScript2 : MonoBehaviour
 {
-    private XRIDefaultInputActions mia;
+    // private XRIDefaultInputActions mia;
     private InputAction triggerValAction;
     private float triggerVal;
     private bool hasBeenReset = true;
@@ -22,12 +22,12 @@ public class TriggerScript2 : MonoBehaviour
 
     void Awake()
     {
-        mia = new XRIDefaultInputActions();
+        // mia = new XRIDefaultInputActions();
     }
 
     private void OnEnable()
     {
-        triggerValAction = mia.XRIRightHandInteraction.ActivateValue1;
+        // triggerValAction = mia.XRIRightHandInteraction.ActivateValue1;
         triggerValAction.Enable();
 
         triggerValAction.performed += triggerValActionIt;

@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class MassScript : MonoBehaviour
 {
-    private XRIDefaultInputActions mia;
+    // private XRIDefaultInputActions mia;
     private InputAction triggerValAction;
     public AnimationCurve massFactor;
     public AnimationCurve speedFactor;
@@ -25,12 +25,12 @@ public class MassScript : MonoBehaviour
 
     void Awake()
     {
-        mia = new XRIDefaultInputActions();
+        // mia = new XRIDefaultInputActions();
     }
 
     private void OnEnable()
     {
-        triggerValAction = mia.XRILeftHandInteraction.ActivateValueMass;
+        // triggerValAction = mia.XRILeftHandInteraction.ActivateValueMass;
         triggerValAction.Enable();
         triggerValAction.performed += triggerValActionIt;
     }
