@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class MirrorHand : MonoBehaviour
 {
-    public Transform originalHand;
-    private List<Transform> originalTransforms;
-    private List<Transform> cloneTransforms;
 
-    void Start()
+    public Transform originalHand; //make private
+    public List<Transform> originalTransforms;
+    public List<Transform> theseTransforms;
+    private bool ok = false;
+
+
+    public void GetTransforms()
     {
-        getImmediateChildren(gameObject.transform, cloneTransforms);
+        // Debug.Log(transform + " OK");
+        getImmediateChildren(gameObject.transform, theseTransforms);
         getImmediateChildren(originalHand, originalTransforms);
+        ok = true;
+
+        // add rigidbody and collider to each wrist
+
+
     }
 
     private void getImmediateChildren(Transform parent, List<Transform> outputList)
@@ -22,12 +31,16 @@ public class MirrorHand : MonoBehaviour
             getImmediateChildren(child, outputList);
         }
     }
+
     void FixedUpdate()
     {
-        for (int i = 0; i < cloneTransforms.Count; i++) {
-            cloneTransforms[i].localPosition = originalTransforms[i].localPosition;
-            cloneTransforms[i].localRotation = originalTransforms[i].localRotation;
+        if (ok){
+
+        for (int i = 0; i < theseTransforms.Count; i++)
+        {
+            theseTransforms[i].localPosition = originalTransforms[i].localPosition;
+            theseTransforms[i].localRotation = originalTransforms[i].localRotation;
+        }
         }
     }
 }
-        
