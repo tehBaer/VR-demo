@@ -12,6 +12,8 @@ public class Mirror : MonoBehaviour
     public Vector3 posFactors = Vector3.one;
     public bool mirrorPosition, mirrorRotation= true;
     private bool hasStarted = false;
+    public Vector3 debug1;
+    public Vector3 debug2;
 
     void Start(){
         otherStartRot = objectToMirror.transform.localRotation.eulerAngles;
@@ -44,8 +46,11 @@ public class Mirror : MonoBehaviour
 
         if (mirrorPosition & hasStarted){
             Vector3 deltaPos = objectToMirror.transform.localPosition;
+            debug1 = deltaPos;
 
             transform.localPosition = Vector3.Scale(deltaPos, posFactors);
+
+            debug2 = transform.localPosition;
             // transform.localPosition = deltaPos;
         }
     }

@@ -7,7 +7,7 @@ public class HandUtils : MonoBehaviour
 {
 
     public MirrorHand LeftMirrorHand, RightMirrorHand;
-    private GameObject leftHand, rightHand;
+    public GameObject leftHand, rightHand;
     public VRRig vrRig;
     private bool cont = true;
 
@@ -16,13 +16,13 @@ public class HandUtils : MonoBehaviour
         if (cont && transform.childCount > 0){
             rightHand = transform.Find("RightHand(Clone)").gameObject;
             leftHand = transform.Find("LeftHand(Clone)").gameObject;
-
-            LeftMirrorHand.originalHand = rightHand.transform;
-            RightMirrorHand.originalHand = leftHand.transform;
-
             vrRig.rightHand.vrTarget = rightHand.transform.Find("R_Wrist");
             vrRig.leftHand.vrTarget = leftHand.transform.Find("L_Wrist");
+            // attach collider
 
+
+            LeftMirrorHand.originalParent = rightHand.transform;
+            RightMirrorHand.originalParent = leftHand.transform;
             RightMirrorHand.GetTransforms();
             LeftMirrorHand.GetTransforms();
 
